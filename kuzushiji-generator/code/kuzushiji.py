@@ -90,13 +90,25 @@ class Generator:
         font = ImageFont.truetype(font_path, int(self.font.size * 0.5))
 
         self.draw.text(
-            (self.image.size[0] * 0.1, self.image.size[1] * 0.8),
+            (
+                self.image.size[0] * 0.08,
+                self.image.size[1] * 0.95 - font.size * len(name),
+            ),
             name,
             fill="red",
             anchor="lt",
             font=font,
             direction="ttb",
         )
+
+    def rescale(self, scale):
+        self.image = self.image.resize(
+            size=(
+                math.ceil(self.image.size[0] * scale),
+                math.ceil(self.image.size[1] * scale),
+            )
+        )
+        self.draw = ImageDraw.Draw(self.image)
 
     def save(
         self,
@@ -127,4 +139,5 @@ if __name__ == "__main__":
         "寿限無寿限無五劫の擦り切れ",
         "./font/aoyagireisyosimo_ttf_2_01.ttf",
     )
+    generator.rescale(0.3)
     generator.save("./output/test.png")
