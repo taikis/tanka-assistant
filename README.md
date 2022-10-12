@@ -2,7 +2,7 @@
 
 短歌を入力するとくずし字にして画像化します。
 
-## 使わせていただいたフォントとライセンス
+## 使わせていただいた素材
 
 ### 衡山毛筆フォント草書
 
@@ -15,3 +15,8 @@ https://opentype.jp/kouzansousho.htm
 SIMO様  
 https://opentype.jp/aoyagireisho.htm  
 [フォントの使用方法と、フォントの解説](./aoyagireisho-info)
+
+### 和紙画像
+
+ベイツ・イメージズ  
+https://www.beiz.jp/
