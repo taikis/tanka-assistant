@@ -1,6 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 import math
-
+import datetime
 
 class Generator:
     def __init__(
@@ -98,8 +98,16 @@ class Generator:
             direction="ttb",
         )
 
-    def save(self, path):
+    def save(
+        self,
+        path=None,
+    ):
+        if path is None or path == "":
+            #日付時刻からファイル名を生成
+            now = datetime.datetime.now()
+            path = f"./output/out-{now.strftime('%Y%m%d%H%M%S')}.png"
         self.image.save(path)
+        return path
 
     def show(self):
         self.image.show()
