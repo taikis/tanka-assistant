@@ -1,5 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 import math
+import datetime
 
 
 class Generator:
@@ -7,12 +8,14 @@ class Generator:
         self,
         text,
         image_path=None,
-        font_path="./font/KouzanBrushFontSousyo.ttf",
-        font_size=300,
+        font_path="/code/font/KouzanBrushFontSousyo.ttf",
+        font_size=None,
         image_size=(2480, 3508),
     ):
         # テキストを空白で分割
         self.__text = text.split()
+        if font_size is None:
+            font_size = int(image_size[0] * 0.12)
         self.font = ImageFont.truetype(font_path, font_size)
         if image_path is None:
             self.image = Image.new("RGB", image_size, (255, 255, 255))
@@ -80,7 +83,7 @@ class Generator:
                 direction="ttb",
             )
 
-    def stamp(
+    def sign(
         self,
         name,
         font_path=None,
@@ -90,7 +93,10 @@ class Generator:
         font = ImageFont.truetype(font_path, int(self.font.size * 0.5))
 
         self.draw.text(
-            (self.image.size[0] * 0.1, self.image.size[1] * 0.8),
+            (
+                self.image.size[0] * 0.08,
+                self.image.size[1] * 0.95 - font.size * len(name),
+            ),
             name,
             fill="red",
             anchor="lt",
@@ -98,8 +104,25 @@ class Generator:
             direction="ttb",
         )
 
-    def save(self, path):
+    def rescale(self, scale):
+        self.image = self.image.resize(
+            size=(
+                math.ceil(self.image.size[0] * scale),
+                math.ceil(self.image.size[1] * scale),
+            )
+        )
+        self.draw = ImageDraw.Draw(self.image)
+
+    def save(
+        self,
+        path=None,
+    ):
+        if path is None or path == "":
+            # 日付時刻からファイル名を生成
+            now = datetime.datetime.now()
+            path = f"/code/output/out-{now.strftime('%Y%m%d%H%M%S')}.png"
         self.image.save(path)
+        return path
 
     def show(self):
         self.image.show()
@@ -115,8 +138,9 @@ if __name__ == "__main__":
         image_path="./background/japanese-paper_00096.jpg",
     )
     generator.draw_text()
-    generator.stamp(
-        "菅原",
+    generator.sign(
+        "寿限無寿限無五劫の擦り切れ",
         "./font/aoyagireisyosimo_ttf_2_01.ttf",
     )
+    generator.rescale(0.3)
     generator.save("./output/test.png")
