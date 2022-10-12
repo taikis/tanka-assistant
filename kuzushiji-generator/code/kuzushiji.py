@@ -142,5 +142,5 @@ if __name__ == "__main__":
         "寿限無寿限無五劫の擦り切れ",
         "./font/aoyagireisyosimo_ttf_2_01.ttf",
     )
-    generator.rescale(0.3)
+    generator.rescale(0.2)
     generator.save("./output/test.png")
