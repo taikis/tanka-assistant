@@ -2,17 +2,20 @@ from PIL import Image, ImageFont, ImageDraw
 import math
 import datetime
 
+
 class Generator:
     def __init__(
         self,
         text,
         image_path=None,
-        font_path="./font/KouzanBrushFontSousyo.ttf",
-        font_size=300,
+        font_path="/code/font/KouzanBrushFontSousyo.ttf",
+        font_size=None,
         image_size=(2480, 3508),
     ):
         # テキストを空白で分割
         self.__text = text.split()
+        if font_size is None:
+            font_size = int(image_size[0] * 0.12)
         self.font = ImageFont.truetype(font_path, font_size)
         if image_path is None:
             self.image = Image.new("RGB", image_size, (255, 255, 255))
@@ -115,9 +118,9 @@ class Generator:
         path=None,
     ):
         if path is None or path == "":
-            #日付時刻からファイル名を生成
+            # 日付時刻からファイル名を生成
             now = datetime.datetime.now()
-            path = f"./output/out-{now.strftime('%Y%m%d%H%M%S')}.png"
+            path = f"/code/output/out-{now.strftime('%Y%m%d%H%M%S')}.png"
         self.image.save(path)
         return path
 
