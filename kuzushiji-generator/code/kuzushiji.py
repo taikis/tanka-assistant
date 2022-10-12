@@ -80,7 +80,7 @@ class Generator:
                 direction="ttb",
             )
 
-    def stamp(
+    def sign(
         self,
         name,
         font_path=None,
@@ -123,8 +123,8 @@ if __name__ == "__main__":
         image_path="./background/japanese-paper_00096.jpg",
     )
     generator.draw_text()
-    generator.stamp(
-        "菅原",
+    generator.sign(
+        "寿限無寿限無五劫の擦り切れ",
         "./font/aoyagireisyosimo_ttf_2_01.ttf",
     )
     generator.save("./output/test.png")

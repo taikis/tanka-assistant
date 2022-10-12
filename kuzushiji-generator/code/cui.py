@@ -13,7 +13,7 @@ def main():
     # 署名を入力してください
     name = input("署名を入力してください: ")
     if name != "":
-        generator.stamp(
+        generator.sign(
             name,
             "./font/aoyagireisyosimo_ttf_2_01.ttf",
         )
