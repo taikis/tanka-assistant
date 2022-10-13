@@ -6,10 +6,10 @@
 
 **環境の立ち上げ**  
 1. Dockerをインストール
-1. `make up`
+1. `make up` or `docker compose up -d` 
 
 **短歌画像の生成**
-1. `make tanka`
+1. `make tanka` or `docker compose exec kuzushiji-generator python3 /code/cui.py`
 1. CUIに従って短歌を作成（短歌は空白区切りで入力してください）
 1. `./kuzushiji-generator/code/output/`に生成されます
 
