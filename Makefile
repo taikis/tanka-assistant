@@ -15,4 +15,6 @@ logs:
 ps:
 	docker compose ps
 shell:
-	docker compose exec resource bash
+	docker compose exec kuzushiji-generator bash
+tanka:
+	docker compose exec kuzushiji-generator python3 /code/cui.py

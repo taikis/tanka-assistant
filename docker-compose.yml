@@ -4,6 +4,8 @@ services:
         build:
             context: ./kuzushiji-generator
             dockerfile: Dockerfile
+        environment:
+            TZ: Asia/Tokyo
         volumes:
             - ./kuzushiji-generator/code:/code
             - ~/.config/pulse:/root/.config/pulse
