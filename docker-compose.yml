@@ -4,14 +4,13 @@ services:
         build:
             context: ./kuzushiji-generator
             dockerfile: Dockerfile
-        environment:
-            TZ: Asia/Tokyo
+        environment: 
+            - PULSE_SERVER=docker.for.mac.localhost
+            - TZ: Asia/Tokyo
         volumes:
             - ./kuzushiji-generator/code:/code
             - ~/.config/pulse:/root/.config/pulse
         tty: true
-        environment:
-            - PULSE_SERVER=docker.for.mac.localhost
     voicevox:
         image: voicevox/voicevox_engine:cpu-ubuntu20.04-latest
         ports:
