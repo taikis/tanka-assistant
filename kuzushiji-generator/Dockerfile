@@ -1,6 +1,7 @@
 FROM python:3.8
 
-RUN apt-get -y install locales && \
+RUN apt-get update && \
+    apt-get -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 
 RUN mkdir /code
