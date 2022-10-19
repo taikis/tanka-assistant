@@ -2,10 +2,6 @@ FROM python:3.8
 
 RUN apt-get -y install locales && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-RUN apt-get install -y \
-    pulseaudio \
-    python3-dev \
-    libasound2-dev
 
 RUN mkdir /code
 COPY code /code/

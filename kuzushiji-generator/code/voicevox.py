@@ -1,7 +1,5 @@
-import io
 import requests
-import wave
-import simpleaudio as sa
+import IPython as IP
 
 class Speaker:
     voicevox_url = "http://voicevox:50021"
@@ -18,6 +16,8 @@ class Speaker:
         self.audio_query = audio_query
         if self.text is not None and self.audio_query is None:
             self.set_audio_query_from_text(self.text)
+
+        self.voice = None
         self.is_voise_updated = False
 
     @classmethod
@@ -57,14 +57,15 @@ class Speaker:
             self.is_voise_updated = True
         return self.voice
 
+    def speak_at_jupyter(self):
+        if self.voice is None:
+            self.get_voice()
+        IP.display.display(IP.display.Audio(self.voice, rate=48000, autoplay=True))
 
 if __name__ == "__main__":
     speakers = Speaker(
         speaker_id=2,
-        text="こんにちは",
+        text="こちふかば においおこせよ うめのはな あるじなしとて はるをわするな",
     )
 
-    with wave.open(io.BytesIO(speakers.get_voice()), "rb") as wave:
-        wave_obj = sa.WaveObject.from_wave_read(wave)
-        play_obj = wave_obj.play()
-        play_obj.wait_done()
+    speakers.speak_at_jupyter()
