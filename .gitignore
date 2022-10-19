@@ -1,3 +1,4 @@
 code/data/MNIST/
 /db
 .vscode/
+*.wav
