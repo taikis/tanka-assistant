@@ -4,6 +4,10 @@
 
 ## 使い方
 
+**サウンドインターフェースの共有**
+1. `brew install pulseaudio`
+1. `$ pulseaudio --load=module-native-protocol-tcp --exit-idle-time=-1 --daemon`
+
 **環境の立ち上げ**  
 1. Dockerをインストール
 1. `make up`
