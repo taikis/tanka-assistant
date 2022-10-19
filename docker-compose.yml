@@ -1,16 +1,16 @@
 version: '3'
 services:
-    db:
-        image: mysql:5.7
-        volumes:
-            - ./db:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: tanka
-            MYSQL_USER: user
-            MYSQL_PASSWORD: password
-        ports:
-            - 3306:3306
+    # db:
+    #     image: mysql:5.7
+    #     volumes:
+    #         - ./db:/var/lib/mysql
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: root
+    #         MYSQL_DATABASE: tanka
+    #         MYSQL_USER: user
+    #         MYSQL_PASSWORD: password
+    #     ports:
+    #         - 3306:3306
     kuzushiji-generator:
         build:
             context: ./kuzushiji-generator
@@ -18,3 +18,9 @@ services:
         volumes:
             - ./kuzushiji-generator/code:/code
         tty: true
+    voicevox:
+        image: voicevox/voicevox_engine:cpu-ubuntu20.04-latest
+        ports:
+            - 50021:50021
+        tty: true
+        
