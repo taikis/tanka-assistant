@@ -8,6 +8,10 @@ services:
             TZ: Asia/Tokyo
         volumes:
             - ./kuzushiji-generator/code:/code
+        ports:
+            - 8000:8000
+        env_file:
+            - kuzushiji-generator/.env
         tty: true
     voicevox:
         image: voicevox/voicevox_engine:cpu-ubuntu20.04-latest
