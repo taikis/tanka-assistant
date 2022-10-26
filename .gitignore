@@ -8,3 +8,4 @@ test.ipynb
 # Mercuryが生成するファイル
 celerybeat-schedule
 celery.sqlite
+kuzushiji-generator/code/demo.ipynb

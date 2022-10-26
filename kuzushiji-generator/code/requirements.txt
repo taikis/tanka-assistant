@@ -1,3 +1,4 @@
 pillow
 notebook
 requests
+mljar-mercury
