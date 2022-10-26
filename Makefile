@@ -18,3 +18,5 @@ shell:
 	docker compose exec kuzushiji-generator bash
 tanka:
 	docker compose exec kuzushiji-generator python3 /code/cui.py
+server:
+	docker compose exec kuzushiji-generator mercury run main.ipynb 
