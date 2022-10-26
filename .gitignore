@@ -2,3 +2,9 @@ code/data/MNIST/
 /db
 .vscode/
 *.wav
+.env
+output/
+test.ipynb
+# Mercuryが生成するファイル
+celerybeat-schedule
+celery.sqlite
