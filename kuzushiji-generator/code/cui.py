@@ -4,7 +4,7 @@ import kuzushiji
 def main():
     # 文字を受け取る
     text = input("短歌を入力してください: ")
-    generator = kuzushiji.Generator(
+    generator = kuzushiji.Whiter(
         text,
         font_path="./font/KouzanBrushFontSousyo.ttf",
         image_path="./background/japanese-paper_00096.jpg",
