@@ -3,7 +3,7 @@ import math
 import datetime
 
 
-class Generator:
+class Whiter:
     def __init__(
         self,
         text,
@@ -120,7 +120,7 @@ class Generator:
         if path is None or path == "":
             # 日付時刻からファイル名を生成
             now = datetime.datetime.now()
-            path = f"/code/output/out-{now.strftime('%Y%m%d%H%M%S')}.png"
+            path = f"/code/kuzushiji/output/out-{now.strftime('%Y%m%d%H%M%S')}.png"
         self.image.save(path)
         return path
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     テスト用短歌
     意味: 進捗を作らなくてはいけないと思いつつ、手が進まない。気付けば夜は明け、真っ白なディスプレイが目に入る。
     """
-    generator = Generator(
+    generator = Whiter(
         text="進捗や 作らなくてはと 白々明け されど目の前 銀雪の画面",
         image_path="./background/japanese-paper_00096.jpg",
     )

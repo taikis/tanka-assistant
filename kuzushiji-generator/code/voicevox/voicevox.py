@@ -58,9 +58,15 @@ class Speaker:
         return self.voice
 
     def speak_at_jupyter(self):
-        if self.voice is None:
+        if self.voice is None or not self.is_voise_updated:
             self.get_voice()
-        IP.display.display(IP.display.Audio(self.voice, rate=48000, autoplay=True))
+        IP.display.display(IP.display.Audio(self.voice, rate=24000, autoplay=True))
+    
+    def save_voice(self, path):
+        if self.voice is None or not self.is_voise_updated:
+            self.get_voice()
+        with open(path, "wb") as f:
+            f.write(self.voice)
 
 if __name__ == "__main__":
     speakers = Speaker(
